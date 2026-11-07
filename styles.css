@@ -1,0 +1,359 @@
+/* ==========================================================
+   Kaikamba Glass House - styles.css
+   Sections: 1 Variables | 2 Base | 3 Header | 4 Hero
+             5 Services | 6 About | 7 Contact + Form
+             8 Footer | 9 Mobile
+   ========================================================== */
+
+/* ---------- 1. Variables (colours) ---------- */
+:root {
+  --navy: #1f3358;
+  --ink: #16233f;
+  --gold: #d9ad5b;
+  --glass: #e6e9ee;
+  --paper: #f6f7f9;
+  --text: #26344f;
+  --muted: #5d6b84;
+  --card: #ffffff;
+  --line: #d5dae3;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark mode (follows the visitor's phone/computer setting) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1930;
+    --glass: #16233f;
+    --card: #1a2a4a;
+    --text: #e3e8f1;
+    --muted: #9fadc5;
+    --line: #2d3f63;
+    --ink: #f1f4f9;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Poppins, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 64px 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 32px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--gold);
+}
+
+.btn.main {
+  background: var(--gold);
+  color: #1a2540;
+}
+
+.btn.alt {
+  color: #ffffff;
+}
+
+/* ---------- 3. Header ---------- */
+header {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--gold);
+}
+
+.brand span {
+  color: #ffffff;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+nav a {
+  margin-left: 18px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #dfe5f1;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  background: linear-gradient(120deg, var(--navy) 0 58%, #2c4776 58% 100%);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.hero p {
+  max-width: 46ch;
+  color: #dbe2ef;
+  margin: 0 0 26px;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Decorative glass pane */
+.pane {
+  aspect-ratio: 3 / 4;
+  max-width: 300px;
+  margin-left: auto;
+  position: relative;
+  border: 2px solid var(--gold);
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.28) 0 14%, transparent 14% 30%, rgba(255, 255, 255, 0.12) 30% 38%, transparent 38%),
+    linear-gradient(180deg, #5d7fb4, #243a64);
+}
+
+.pane::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- 5. Services ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.item {
+  background: var(--card);
+  border-left: 4px solid var(--gold);
+  padding: 20px 22px;
+}
+
+.item h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+/* ---------- 6. About ---------- */
+.alt-bg {
+  background: var(--glass);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.about p {
+  margin: 0 0 14px;
+}
+
+/* ---------- 7. Contact + Form ---------- */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+dl {
+  margin: 0;
+}
+
+dt {
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 14px;
+}
+
+dd {
+  margin: 2px 0 0;
+  color: var(--muted);
+}
+
+form {
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+input,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--text);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+
+.note {
+  font-size: 0.88rem;
+  color: var(--muted);
+  min-height: 1.2em;
+}
+
+/* Backup options shown if automatic sending fails */
+.opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.opts[hidden] {
+  display: none;
+}
+
+.opts a,
+.opts button {
+  padding: 8px 14px;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.opts a:hover,
+.opts button:hover {
+  background: var(--gold);
+  color: #1a2540;
+}
+
+/* ---------- 8. Footer ---------- */
+footer {
+  background: var(--navy);
+  color: #c9d2e4;
+  font-size: 0.9rem;
+}
+
+footer .wrap {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+/* ---------- 9. Mobile (phones and small screens) ---------- */
+@media (max-width: 760px) {
+  .hero {
+    background: var(--navy);
+  }
+
+  .hero .wrap,
+  .about,
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .pane {
+    display: none;
+  }
+
+  nav a {
+    margin: 0 14px 0 0;
+  }
+}
